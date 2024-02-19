@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <dirent.h>
 #include <string.h>
+#include <ctype.h>
 
 //Using this library to check get the directory entry:
 // https://pubs.opengroup.org/onlinepubs/7908799/xsh/dirent.h.html
