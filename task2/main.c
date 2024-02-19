@@ -13,11 +13,11 @@
 //I feel like there's gotta be a better way to do this
 int isProcess(const struct dirent *proc){
     //to look for a number, we can iterate over the possible processes, or proc
-    printf(proc + "\n")
+    printf(proc + "\n");
     for(int i = 0; i < strlen(proc->d_name);i++){
         //checks if the current char is a digit
         if(!isdigit(proc->d_name[i])){
-            printf(d_name[i] + "\n")
+            printf(d_name[i] + "\n");
             return 0;
         }
     }
