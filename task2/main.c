@@ -10,7 +10,7 @@ int isProcess(const struct dirent *proc){
     printf("Iterating");
     for(int i = 0; i < strlen(proc->d_name);i++){
         //checks if the current char is a digit
-        if(!isDigit(proc->d_name[i])){
+        if(!isdigit(proc->d_name[i])){
             return 0;
         }
     }
