@@ -7,10 +7,10 @@
 
 int isProcess(const struct dirent *proc){
     //to look for a number, we can iterate over the possible processes, or proc
-    printf("Iterating")
-    for(int i = 0; i < strlen(entry->d_name);i++){
+    printf("Iterating");
+    for(int i = 0; i < strlen(proc->d_name);i++){
         //checks if the current char is a digit
-        if(!isDigit(entry->d_name[i])){
+        if(!isDigit(proc->d_name[i])){
             return 0;
         }
     }
@@ -28,7 +28,7 @@ int main(){
     //iterate over each entry in a while loop?
     while ((proc = readdir(dir)) != NULL){
         if (isProcess(proc)){
-            printf("PID: %s\n", entry->d_name);
+            printf("PID: %s\n", proc->d_name);
         }
     }
 
