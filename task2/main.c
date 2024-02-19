@@ -26,5 +26,10 @@ int main(){
     //check error state... how?
 
     //iterate over each entry in a while loop?
+    while ((proc = readdir(dir)) != NULL){
+        if (isProcess(proc)){
+            printf("PID: %s\n", entry->d_name);
+        }
+    }
 
 }
