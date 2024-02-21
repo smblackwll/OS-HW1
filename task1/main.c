@@ -6,6 +6,9 @@
 
 // Reading in from stdin safely stuff here, just reads it all in as one big string.
 // https://alexandra-zaharia.github.io/posts/how-to-read-safely-from-stdin-in-c/
+
+
+
 void main(void){
     int run = 1;
     char str[256];
@@ -25,11 +28,26 @@ void main(void){
             str[i] = '\0';
         }
 
-        printf(str);
-        printf('\0');
+
+
+        //Split the parameters on the space... I hope?
+        char* token = strtok(userIn, " ");
+
+        i = 0;
+        while (token != NULL){
+            args[i] = malloc(sizeof(char)*strlen(token+1));
+            strcpy(args[i], token);
+            token = strtok(NULL, " ");
+            i++;
+        }
+
 
         if(strcmp(str, "exit()") == 0){
             run = 0;
+        } else{
+            printf(str);
+            printf('\0');
+            printf(args)
         }
     }
 }
