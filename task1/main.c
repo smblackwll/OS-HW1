@@ -49,7 +49,8 @@ void main(void){
         } else{
 //            printf(str);
 //            printf('\0');
-            printf(args);
+            printf(args[0]);
+            printf(args[1]);
         }
     }
 }
