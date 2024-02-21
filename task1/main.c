@@ -53,6 +53,7 @@ void main(void){
 //            printf('\0');
             for (int j = 0; j < i; j++) {
                 printf("%s\n", args[j]);
+            }
         }
     }
 }
