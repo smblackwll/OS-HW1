@@ -88,7 +88,7 @@ long involuntarySwitch(const char *pid){
 
     //read through each line of the file
     while(fgets(line, sizeof(line), status)){
-        if (strncmp(line, "involuntary_ctxt_switches", 23) == 0){
+        if (strncmp(line, "involuntary_ctxt_switches", 26) == 0){
             ptr = line;
             while (*ptr && !isdigit(*ptr)) {
                 ptr++;
@@ -122,7 +122,7 @@ int main(){
         if (isProcess(proc)){
             invol = involuntarySwitch(proc->d_name);
             vol = voluntarySwitch(proc->d_name);
-            printf("PID: %s, %lu, %lu, \n", proc->d_name, invol, vol);
+            printf("PID: %s\t%lu\t%lu\tPATG\n", proc->d_name, invol, vol);
 
         }
     }
