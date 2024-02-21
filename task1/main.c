@@ -21,8 +21,9 @@
 void execute(char *args[]){
     pid_t pid = fork();
     if (pid == 0) {
+        // Execute the command
         if (execvp(args[0], args) == -1) {
-            perror("execution failed");
+            perror("execvp failed");
             exit(EXIT_FAILURE);
         }
     } else if (pid > 0) { // Parent process
@@ -62,7 +63,7 @@ void main(void){
         int i = 0;
         while (sect != NULL){
             args[i] = malloc(sizeof(char)*strlen(sect+1));
-            sect(args[i], sect);
+            strcpy(args[i], sect);
             sect = strtok(NULL, " ");
             i++;
         }
