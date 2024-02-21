@@ -117,7 +117,7 @@ int main(){
     //check error state... how?
 
     //iterate over each entry in a while loop?
-    printf("PID\tInvoluntary Switch\tVoluntary Switch\tExec Path");
+    printf("PID\tInvoluntary Switch\tVoluntary Switch\tExec Path\n");
     while ((proc = readdir(dir)) != NULL){
         if (isProcess(proc)){
             invol = involuntarySwitch(proc->d_name);
