@@ -134,6 +134,9 @@ int main(){
             snprintf(path, sizeof(path), "/proc/%s/exe", proc->d_name);
             //note: is not null terminated
             ssize_t len = readlink(path, exec_path, sizeof(exec_path)-1);
+            if(len == -1){
+                perror("cannot find/access");
+            }
             exec_path[len] = '\0';
 
 //            exec_path = exe_path;
