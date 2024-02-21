@@ -35,7 +35,7 @@ void main(void){
 
 
         //Split the parameters on the space... I hope?
-        char* token = strtok(userIn, " ");
+        char* token = strtok(str, " ");
 
         i = 0;
         while (token != NULL){
