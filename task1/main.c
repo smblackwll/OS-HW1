@@ -72,8 +72,8 @@ void main(void){
         if(strcmp(args[0], "exit()") == 0){
             run = 0;
         } else{
-//            printf(str);
-//            printf('\0');
+            execute(args);
+
             for (int j = 0; j < i; j++) {
                 printf("%s\n", args[j]);
                 free(args[j]);
