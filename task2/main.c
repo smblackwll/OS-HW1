@@ -32,7 +32,7 @@ int isProcess(const struct dirent *proc){
 long voluntarySwitch(const char *pid){
     //Create the char array/string for the file path
     char path[256];
-    File *file;
+    FILE *status;
     //create a place to save the line
     char line[256];
 
@@ -43,7 +43,7 @@ long voluntarySwitch(const char *pid){
 
     snprintf(path, sizeof(path), "/proc/%s/status", pid);
 
-    status = fopen(filepath, "r");
+    status = fopen(path, "r");
     if (!status){
         perror("Status file could not be found.")
         return;
@@ -69,7 +69,7 @@ long voluntarySwitch(const char *pid){
 long involuntarySwitch(const char *pid){
 //Create the char array/string for the file path
     char path[256];
-    File *file;
+    FILE *status;
     //create a place to save the line
     char line[256];
 
@@ -80,7 +80,7 @@ long involuntarySwitch(const char *pid){
 
     snprintf(path, sizeof(path), "/proc/%s/status", pid);
 
-    status = fopen(filepath, "r");
+    status = fopen(path, "r");
     if (!status){
         perror("Status file could not be found.")
         return;
