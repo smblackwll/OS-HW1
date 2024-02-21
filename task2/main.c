@@ -43,6 +43,11 @@ long voluntarySwitch(const char *pid){
 
     snprintf(path, sizeof(path), "/proc/%s/status", pid);
 
+    status = fopen(path, "r");
+    if (!status){
+        perror("Status file could not be found.");
+        return 1;
+    }
 
     //read through each line of the file
     while(fgets(line, sizeof(line), status)){
@@ -74,6 +79,12 @@ long involuntarySwitch(const char *pid){
     char *ptr;
 
     snprintf(path, sizeof(path), "/proc/%s/status", pid);
+
+    status = fopen(path, "r");
+    if (!status){
+        perror("Status file could not be found.");
+        return 1;
+    }
 
     //read through each line of the file
     while(fgets(line, sizeof(line), status)){
@@ -126,7 +137,7 @@ int main(){
         if (isProcess(proc)){
             invol = involuntarySwitch(proc->d_name);
             vol = voluntarySwitch(proc->d_name);
-//            exec_path = exe_path;
+//            exe_path = execPath(proc->d_name);
             printf("%s\t%lu\t%lu\tPATH\n", proc->d_name, invol, vol);
 
         }
