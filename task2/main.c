@@ -46,7 +46,7 @@ long voluntarySwitch(const char *pid){
     status = fopen(path, "r");
     if (!status){
         perror("Status file could not be found.");
-        return;
+        return 1;
     }
 
     //read through each line of the file
@@ -83,7 +83,7 @@ long involuntarySwitch(const char *pid){
     status = fopen(path, "r");
     if (!status){
         perror("Status file could not be found.");
-        return;
+        return 1;
     }
 
     //read through each line of the file
@@ -117,7 +117,7 @@ int main(){
     //check error state... how?
 
     //iterate over each entry in a while loop?
-    printf("PID\tInvoluntary Switch\tVoluntary Switch\tExec Path")
+    printf("PID\tInvoluntary Switch\tVoluntary Switch\tExec Path");
     while ((proc = readdir(dir)) != NULL){
         if (isProcess(proc)){
             invol = involuntarySwitch(proc->d_name);
