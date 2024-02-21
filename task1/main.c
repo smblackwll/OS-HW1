@@ -25,7 +25,7 @@ void main(void){
             str[i] = '\0';
         }
 
-        printf(userIn);
+        printf(str);
 
         if(strcmp(str, "exit()") == 0){
             run = 0;
