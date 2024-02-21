@@ -5,9 +5,37 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <unistd.h>
+#include <sys/wait.h>
 
 // Reading in from stdin safely stuff here, just reads it all in as one big string.
 // https://alexandra-zaharia.github.io/posts/how-to-read-safely-from-stdin-in-c/
+
+//Once again, CHATGPT helped a lot in figuring out how to pass args. I'm uhhh not great with pointers
+
+//wait stuff from here:
+//https://www.baeldung.com/linux/wait-command
+//They're great - they essentially just figure out
+
+
+void execute(char *args[]){
+    pid_t pid = fork();
+    if (pid == 0) {
+        if (execvp(args[0], args) == -1) {
+            perror("execution failed");
+            exit(EXIT_FAILURE);
+        }
+    } else if (pid > 0) { // Parent process
+        int status;
+        wait(&status); // Wait for the child process to finish
+    } else {
+        // Fork failed
+        perror("fork failed");
+        exit(EXIT_FAILURE);
+    }
+}
+
+
 
 
 
@@ -29,13 +57,13 @@ void main(void){
 
 
         //Split the parameters on the space... I hope?
-        char* token = strtok(str, " ");
+        char* sect = strtok(str, " ");
 
         int i = 0;
-        while (token != NULL){
-            args[i] = malloc(sizeof(char)*strlen(token+1));
-            strcpy(args[i], token);
-            token = strtok(NULL, " ");
+        while (sect != NULL){
+            args[i] = malloc(sizeof(char)*strlen(sect+1));
+            sect(args[i], sect);
+            sect = strtok(NULL, " ");
             i++;
         }
         args[i] = NULL;
@@ -47,6 +75,7 @@ void main(void){
 //            printf('\0');
             for (int j = 0; j < i; j++) {
                 printf("%s\n", args[j]);
+                free(args[j]);
             }
         }
     }
