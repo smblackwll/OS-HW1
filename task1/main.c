@@ -21,11 +21,6 @@
 void execute(char *args[]){
     pid_t pid = fork();
     if (pid == 0) {
-        if(strcmp(args[0], "cd") == 0)){
-            if (chdir(args) != 0){
-                perror("changing directory failed.");
-            }
-        }
         // Execute the command
         if (execvp(args[0], args) == -1) {
             perror("exec failed");
