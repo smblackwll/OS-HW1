@@ -23,7 +23,7 @@ void execute(char *args[]){
     if (pid == 0) {
         if(strcmp(args[0], "cd") == 0)){
             if (chdir(args) != 0){
-                perror("changing directory failed.")
+                perror("changing directory failed.");
             }
         }
         // Execute the command
