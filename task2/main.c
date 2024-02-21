@@ -88,7 +88,7 @@ long involuntarySwitch(const char *pid){
 
     //read through each line of the file
     while(fgets(line, sizeof(line), status)){
-        if (strncmp(line, "involuntary_ctxt_switches", 26) == 0){
+        if (strncmp(line, "nonvoluntary_ctxt_switches", 26) == 0){
             ptr = line;
             while (*ptr && !isdigit(*ptr)) {
                 ptr++;
