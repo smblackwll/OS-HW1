@@ -43,11 +43,6 @@ long voluntarySwitch(const char *pid){
 
     snprintf(path, sizeof(path), "/proc/%s/status", pid);
 
-    status = fopen(path, "r");
-    if (!status){
-        perror("Status file could not be found.");
-        return 1;
-    }
 
     //read through each line of the file
     while(fgets(line, sizeof(line), status)){
@@ -79,12 +74,6 @@ long involuntarySwitch(const char *pid){
     char *ptr;
 
     snprintf(path, sizeof(path), "/proc/%s/status", pid);
-
-    status = fopen(path, "r");
-    if (!status){
-        perror("Status file could not be found.");
-        return 1;
-    }
 
     //read through each line of the file
     while(fgets(line, sizeof(line), status)){
@@ -128,7 +117,7 @@ int main(){
     long invol = 0;
     long vol = 0;
     dir = opendir("/proc");
-    char exe_path[256];
+    char exe_path;
     //check error state... how?
 
     //iterate over each entry in a while loop?
