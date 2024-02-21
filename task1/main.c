@@ -24,20 +24,14 @@ void main(void){
         }
 
 
-        int i = 0;
-        while (str[i] != '\n' && str[i] != '\0')
-            i++;
-
-        if (str[i] == '\n'){
-            str[i] = '\0';
-        }
+        str[strcspn(str, "\r\n")] = 0;
 
 
 
         //Split the parameters on the space... I hope?
         char* token = strtok(str, " ");
 
-        i = 0;
+        int i = 0;
         while (token != NULL){
             args[i] = malloc(sizeof(char)*strlen(token+1));
             strcpy(args[i], token);
@@ -46,7 +40,7 @@ void main(void){
         }
         args[i] = NULL;
 
-        if(strcmp(str, "exit()") == 0){
+        if(strcmp(args[0], "exit()") == 0){
             run = 0;
         } else{
 //            printf(str);
