@@ -131,13 +131,13 @@ int main(){
             //create a place to save the line
             char line[256];
 
-            snprintf(path, sizeof(path), "/proc/%s/exe", pid);
+            snprintf(path, sizeof(path), "/proc/%s/exe", proc->d_name);
             //note: is not null terminated
             ssize_t len = readlink(path, exec_path, sizeof(exec_path)-1);
             exec_path[len] = '\0';
 
-            exec_path = exe_path;
-            printf("%s\t%lu\t%lu\t%s\n", proc->d_name, invol, vol, exe_path);
+//            exec_path = exe_path;
+            printf("%s\t%lu\t%lu\t%s\n", proc->d_name, invol, vol, exec_path);
 
         }
     }
