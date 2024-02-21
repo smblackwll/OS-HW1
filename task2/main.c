@@ -117,7 +117,7 @@ int main(){
     long invol = 0;
     long vol = 0;
     dir = opendir("/proc");
-    char exe_path;
+    char exe_path[256];
     //check error state... how?
 
     //iterate over each entry in a while loop?
