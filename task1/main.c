@@ -12,7 +12,7 @@ void main(void){
     char userIn[256];
     char args[256];
 
-    while(run = 1){
+    while(run == 1){
         char userIn = fgets(str, sizeof(str), stdin);
         if(!userIn){
             return;
