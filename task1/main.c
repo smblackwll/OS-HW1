@@ -26,7 +26,7 @@ void main(void){
         }
 
         printf(str);
-        printf('\n');
+        printf('\0');
 
         if(strcmp(str, "exit()") == 0){
             run = 0;
