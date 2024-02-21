@@ -13,7 +13,6 @@ void main(void){
     char args[256];
 
     while(run == 1){
-        str[0] = '\0';
         char userIn = fgets(str, sizeof(str), stdin);
         if(!userIn){
             return;
@@ -28,6 +27,7 @@ void main(void){
         }
 
         printf(userIn);
+        printf('\n')
 
         if(strcmp(str, "exit()") == 0){
             run = 0;
