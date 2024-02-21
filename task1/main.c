@@ -15,13 +15,15 @@ void main(void){
     int run = 1;
     char str[256];
     char userIn[256];
-    char args[256];
+    char* args[256];
 
     while(run == 1){
         char userIn = fgets(str, sizeof(str), stdin);
         if(!userIn){
             return;
         }
+
+
         int i = 0;
         while (str[i] != '\n' && str[i] != '\0')
             i++;
@@ -42,15 +44,15 @@ void main(void){
             token = strtok(NULL, " ");
             i++;
         }
-
+        args[i] = NULL;
 
         if(strcmp(str, "exit()") == 0){
             run = 0;
         } else{
 //            printf(str);
 //            printf('\0');
-            printf(args[0]);
-            printf(args[1]);
+            for (int j = 0; j < i; j++) {
+                printf("%s\n", args[j]);
         }
     }
 }
