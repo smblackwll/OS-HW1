@@ -27,7 +27,7 @@ void main(void){
         }
 
         printf(userIn);
-        printf('\n')
+        printf('\n');
 
         if(strcmp(str, "exit()") == 0){
             run = 0;
