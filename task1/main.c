@@ -3,6 +3,8 @@
 // if it's exit run the exit function. Otherwise, we can use execvp and the parsed args to run a command.
 //we may need fork?
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
 // Reading in from stdin safely stuff here, just reads it all in as one big string.
 // https://alexandra-zaharia.github.io/posts/how-to-read-safely-from-stdin-in-c/
@@ -45,8 +47,8 @@ void main(void){
         if(strcmp(str, "exit()") == 0){
             run = 0;
         } else{
-            printf(str);
-            printf('\0');
+//            printf(str);
+//            printf('\0');
             printf(args);
         }
     }
