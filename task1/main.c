@@ -75,7 +75,6 @@ void main(void){
             execute(args);
 
             for (int j = 0; j < i; j++) {
-                printf("%s\n", args[j]);
                 free(args[j]);
             }
         }
