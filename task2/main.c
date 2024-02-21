@@ -126,7 +126,17 @@ int main(){
         if (isProcess(proc)){
             invol = involuntarySwitch(proc->d_name);
             vol = voluntarySwitch(proc->d_name);
-            exe_path = execPath(proc->d_name);
+            char path[PATH_MAX];
+            char exec_path[PATH_MAX];
+            //create a place to save the line
+            char line[256];
+
+            snprintf(path, sizeof(path), "/proc/%s/exe", pid);
+            //note: is not null terminated
+            ssize_t len = readlink(path, exec_path, sizeof(exec_path)-1);
+            exec_path[len] = '\0';
+
+            exec_path = exe_path;
             printf("%s\t%lu\t%lu\t%s\n", proc->d_name, invol, vol, exe_path);
 
         }
