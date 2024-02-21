@@ -103,6 +103,20 @@ long involuntarySwitch(const char *pid){
     }
 }
 
+const char* execPath(const char *pid){
+    char path[PATH_MAX];
+    char exec_path[PATH_MAX];
+    //create a place to save the line
+    char line[256];
+
+    snprintf(path, sizeof(path), "/proc/%s/exe", pid);
+    //note: is not null terminated
+    ssize_t len = readlink(path, exec_path, sizeof(exec_path)-1);
+    exec_path[len] = '\0';
+
+    return exec_path;
+}
+
 
 
 
@@ -114,6 +128,7 @@ int main(){
     long invol = 0;
     long vol = 0;
     dir = opendir("/proc");
+    char exe_path[256];
     //check error state... how?
 
     //iterate over each entry in a while loop?
@@ -122,7 +137,8 @@ int main(){
         if (isProcess(proc)){
             invol = involuntarySwitch(proc->d_name);
             vol = voluntarySwitch(proc->d_name);
-            printf("PID: %s\t%lu\t%lu\tPATG\n", proc->d_name, invol, vol);
+            exe_path = execPath(proc->d_name);
+            printf("%s\t%lu\t%lu\t%s\n", proc->d_name, invol, vol, exe_path);
 
         }
     }
