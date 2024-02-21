@@ -23,11 +23,9 @@ void main(void){
 
         if (str[i] == '\n'){
             str[i] = '\0';
-
         }
 
         printf(userIn);
-        printf('\n');
 
         if(strcmp(str, "exit()") == 0){
             run = 0;
