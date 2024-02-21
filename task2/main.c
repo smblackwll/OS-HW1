@@ -45,12 +45,12 @@ long voluntarySwitch(const char *pid){
 
     status = fopen(path, "r");
     if (!status){
-        perror("Status file could not be found.")
+        perror("Status file could not be found.");
         return;
     }
 
     //read through each line of the file
-    while(fgets(line), sizeof(line), file){
+    while(fgets(line, sizeof(line), status)){
         if (strncmp(line, "voluntary_ctxt_switches", 23) == 0){
             ptr = line;
             while (*ptr && !isdigit(*ptr)) {
@@ -82,12 +82,12 @@ long involuntarySwitch(const char *pid){
 
     status = fopen(path, "r");
     if (!status){
-        perror("Status file could not be found.")
+        perror("Status file could not be found.");
         return;
     }
 
     //read through each line of the file
-    while(fgets(line), sizeof(line), file){
+    while(fgets(line, sizeof(line), status)){
         if (strncmp(line, "involuntary_ctxt_switches", 23) == 0){
             ptr = line;
             while (*ptr && !isdigit(*ptr)) {
